@@ -42,12 +42,12 @@ function addManager() {
             name: "officeNumber"
         }
     ]).then((response) => {
-        let manager = {
-            name: response.name,
-            id: response.id,
-            email: response.email,
-            uniqueID: response.officeNumber
-        };
+        let manager = new Manager(
+            response.name,
+            response.id,
+            response.email,
+            response.officeNumber
+        );
         employees.push(manager);
         addTeamMember();
     });
@@ -77,12 +77,12 @@ function addEngineer() {
             name: "github"
         }
     ]).then((response) => {
-        let engineer = {
-            name: response.name,
-            id: response.id,
-            email: response.email,
-            uniqueID: response.github
-        };
+        let engineer = new Engineer(
+            response.name,
+            response.id,
+            response.email,
+            response.github
+        );
         employees.push(engineer);
         addTeamMember();
     })
@@ -110,12 +110,12 @@ function addIntern() {
             name: "school"
         }
     ]).then((response) => {
-        let intern = {
-            name: response.name,
-            id: response.id,
-            email: response.email,
-            uniqueID: response.school
-        };
+        let intern = new Intern(
+            response.name,
+            response.id,
+            response.email,
+            response.school
+        );
         employees.push(intern);
         addTeamMember();
     })
@@ -145,6 +145,7 @@ function buildTeam() {
     for (let i = 0; i < employees.length; i++) {
         console.log(employees[i]);
     }
+    // render(employees);
 }
 
 // After the user has input all employees desired, call the `render` function (required
